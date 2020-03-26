@@ -7,7 +7,7 @@
   <div class="nav-height">
     <ul class="navigation-left" style="height:50% !important">
       <li [ngClass]="{ active: nav[0].active }" (click)="onClickChangeActiveFlag(nav[0])" class="nav-item lvl1">
-        <div style="display:flex" class="nav-item-hold" (mouseenter)="selectItem(nav[0])">
+        <div style="display:flex" class="nav-item-hold" (mouseenter)="selectItem(nav[0])" (click)="onClick()">
           <!-- <i [class]="'nav-icon ' + nav[0].icon"></i> -->
           <img src="assets/images/accounticon.png" style="    padding-left: 10px;
     padding-right: 14px;
@@ -55,33 +55,33 @@
 
 </div>
 
-<div [ngClass]="{ open: navService.sidebarState.childnavOpen }" class="sidebar-left-secondary rtl-ps-none"
-  [perfectScrollbar]="{ suppressScrollX: true }">
-  <header>
-    <h6>Apps</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-  </header>
-  <ng-container *ngTemplateOutlet="menuTemplate; context: { parentItem: selectedItem }"></ng-container>
-</div>
+<!--<div [ngClass]="{ open: navService.sidebarState.childnavOpen }" class="sidebar-left-secondary rtl-ps-none"-->
+<!--  [perfectScrollbar]="{ suppressScrollX: true }">-->
+<!--  <header>-->
+<!--    <h6>Apps</h6>-->
+<!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
+<!--  </header>-->
+<!--  <ng-container *ngTemplateOutlet="menuTemplate; context: { parentItem: selectedItem }"></ng-container>-->
+<!--</div>-->
 
-<ng-template #menuTemplate let-parentItem="parentItem">
-  <ul class="childNav" appDropdown>
-    <li *ngFor="let item of parentItem?.sub" appDropdownLink class="nav-item">
-      <a routerLink="{{ item.state }}" *ngIf="item.type === 'link'" class="" routerLinkActive="open">
-        <i *ngIf="item.icon" [class]="'nav-icon ' + item.icon"></i>
-        <span class="item-name lvl1">{{ item.name }}</span>
-      </a>
+<!--<ng-template #menuTemplate let-parentItem="parentItem">-->
+<!--  <ul class="childNav" appDropdown>-->
+<!--    <li *ngFor="let item of parentItem?.sub" appDropdownLink class="nav-item">-->
+<!--      <a routerLink="{{ item.state }}" *ngIf="item.type === 'link'" class="" routerLinkActive="open">-->
+<!--        <i *ngIf="item.icon" [class]="'nav-icon ' + item.icon"></i>-->
+<!--        <span class="item-name lvl1">{{ item.name }}</span>-->
+<!--      </a>-->
 
-      <div *ngIf="item.type === 'dropDown'">
-        <a appDropdownToggle [ngClass]="{ open: item.active }" routerLinkActive="open">
-          <i *ngIf="item.icon" [class]="'nav-icon ' + item.icon"></i>
-          <span class="item-name">{{ item.name }}</span>
-          <i class="dd-arrow i-Arrow-Down"></i>
-        </a>
-        <ng-container *ngTemplateOutlet="menuTemplate; context: { parentItem: item }"></ng-container>
-      </div>
-    </li>
-  </ul>
-</ng-template>
+<!--      <div *ngIf="item.type === 'dropDown'">-->
+<!--        <a appDropdownToggle [ngClass]="{ open: item.active }" routerLinkActive="open">-->
+<!--          <i *ngIf="item.icon" [class]="'nav-icon ' + item.icon"></i>-->
+<!--          <span class="item-name">{{ item.name }}</span>-->
+<!--          <i class="dd-arrow i-Arrow-Down"></i>-->
+<!--        </a>-->
+<!--        <ng-container *ngTemplateOutlet="menuTemplate; context: { parentItem: item }"></ng-container>-->
+<!--      </div>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</ng-template>-->
 
 <div [ngClass]="{ open: navService.sidebarState.childnavOpen }" class="sidebar-overlay" (click)="closeChildNav()"></div>

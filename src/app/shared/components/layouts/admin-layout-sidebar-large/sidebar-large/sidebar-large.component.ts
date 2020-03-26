@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 import { NavigationService, IMenuItem } from 'services/navigation.service';
@@ -48,7 +48,7 @@ export class SidebarLargeComponent implements OnInit {
     },
   ];
 
-  constructor(public router: Router, public navService: NavigationService, private authService: AuthService) {}
+  constructor(public router: Router, public navService: NavigationService, private authService: AuthService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.updateSidebar();
@@ -66,7 +66,7 @@ export class SidebarLargeComponent implements OnInit {
   selectItem(item) {
     this.navService.sidebarState.childnavOpen = true;
     this.selectedItem = item;
-    this.setActiveMainItem(item);
+    // this.setActiveMainItem(item);
   }
 
   closeChildNav() {
@@ -135,5 +135,9 @@ export class SidebarLargeComponent implements OnInit {
     this.authService.logout().subscribe(() => {
       this.router.navigateByUrl('/auth');
     });
+  }
+
+  onClick() {
+    this.router.navigateByUrl('account');
   }
 }

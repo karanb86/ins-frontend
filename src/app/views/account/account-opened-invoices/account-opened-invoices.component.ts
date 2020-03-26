@@ -177,7 +177,6 @@ export class AccountOpenedInvoicesComponent implements OnInit {
         });
       });
       this.getPaginationArray();
-      console.log(this.currentRows);
     });
   }
 }
