@@ -12,88 +12,6 @@ export class AccountOpenedInvoicesComponent implements OnInit {
   currentIndex = 1;
   paginationArray: number[] = [];
   currentRows = [];
-  // rows = [
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  //   {
-  //     invoice_date: '08/31/2019',
-  //     invoice_number: 1253152,
-  //     account_number: 3754235,
-  //     due_date: '08/31/2019',
-  //     total_amount: 5,
-  //     balance_number: 634,
-  //   },
-  // ];
   rows = [];
   public columns = [
     { prop: 'invoice_date', name: 'Invoice Date' },
@@ -108,10 +26,8 @@ export class AccountOpenedInvoicesComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.username = localStorage.getItem('username')
+    this.username = localStorage.getItem('username');
     this.fetchdata();
-    // this.getPaginationArray();
-    // this.getPaginatedData();
     this.changeIndex.subscribe(i => {
       this.currentIndex = i;
         this.getPaginatedData();

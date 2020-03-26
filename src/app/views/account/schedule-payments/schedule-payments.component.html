@@ -1,54 +1,57 @@
-<div class="">
+<div class="schedule-payments">
   <div class="breadcrumb">
     <ul>
-      <li><a [routerLink]="['/account']">Account</a></li>
-      <li>Schedule Payments</li>
+      <li class="f-roboto"><a [routerLink]="['/account']">Account /</a></li>
+      <li class="f-roboto">Schedule Payments</li>
     </ul>
   </div>
 
-  <div class="separator-breadcrumb border-top"></div>
+  <div class="content">
 
-  <div class="row justify-content-center">
-    <div class="form-group mr-5">
-      <label for="invoice">Invoice #</label>
-      <input id="invoice" class="form-control form-control-rounded" type="text" />
-    </div>
-    <div class="form-group ml-5">
-      <div class="input-group">
-        <label for="paid_date" style="width: 100%;">Paid Date</label>
-        <input
-          id="paid_date"
-          type="text"
-          class="form-control form-control-rounded"
-          ngbDatepicker
-          #paidDate="ngbDatepicker"
-          name="startDate"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-secondary btn-rounded" (click)="paidDate.toggle()" type="button">
-            <i class="icon-regular i-Calendar-4"></i>
-          </button>
+    <form id="form">
+      <input type="text" class="invoice-input" placeholder="Enter an invoice number">
+      <input type="text" class="date-input" placeholder="Enter a date">
+      <span><img src="../../../../assets/images/search-icon.png"></span>
+    </form>
+
+    <div class="data-table">
+      <div class="headings">
+        <span class="f-roboto" *ngFor="let column of columns">{{column.name | uppercase}}</span>
+        <span class="free-space"></span>
+        <span class="free-space"></span>
+        <span class="free-space"></span>
+      </div>
+      <div *ngIf="rows.length>0" class="data">
+        <div class="data-rows" *ngFor="let row of currentRows; let i=index;" [ngClass]="{'grey-row': i%2 === 1, 'white-row': i%2 === 0}">
+          <span class="f-roboto">{{row.invoice_date}}</span>
+          <span class="f-roboto">{{row.invoice_number}}</span>
+          <span class="f-roboto">{{row.account_number}}</span>
+          <span class="f-roboto">{{row.due_date}}</span>
+          <span class="f-roboto">{{row.total_amount}}</span>
+          <span class="f-roboto">{{row.balance_number}}</span>
+          <span class="f-roboto button-primary">PDF</span>
+          <span class="f-roboto button-primary">Edit</span>
+          <span class="f-roboto button-error">Delete</span>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <div class="card o-hidden">
-        <ngx-datatable
-          class="material fullscreen"
-          [columnMode]="'force'"
-          [headerHeight]="50"
-          [footerHeight]="0"
-          [rowHeight]="60"
-          [scrollbarV]="false"
-          [scrollbarH]="false"
-          [rows]="rows"
-          [columns]="columns"
-        >
-        </ngx-datatable>
+      <div *ngIf="rows.length === 0" class="data">
+        <span class="data-rows white-row">No data to display</span>
       </div>
     </div>
+
+    <div class="pagination">
+      <div>
+        <img src="../../../../assets/images/backward-icon.png" (click)="onPreviousPage()">
+        <span *ngFor="let i of paginationArray"
+              (click)="onChangeIndex(i)"
+              [ngClass]="{'selected-index': currentIndex === i}">{{i}}</span>
+        <img src="../../../../assets/images/forward-icon.png" (click)="onNextPage()">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="f-roboto">&copy;2020 all rights reserved</span>
   </div>
 </div>
