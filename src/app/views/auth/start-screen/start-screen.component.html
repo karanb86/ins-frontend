@@ -1,0 +1,23 @@
+<div
+  class="card o-hidden"
+  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"
+>
+  <div class="row">
+    <div class="col">
+      <div class="p-4">
+        <div class="d-flex justify-content-center align-items-center flex-column">
+          <a [routerLink]="['/auth/signin']" class="btn btn-primary" style="width: 300px;">
+            Login
+          </a>
+
+          <div class="my-3">
+            <span>New User? Click</span>&nbsp;<a [routerLink]="['/auth/signup']">here</a>&nbsp;<span>to Register</span>
+          </div>
+          <a [routerLink]="['/auth/without-registration']" class="btn btn-primary" style="width: 300px;">
+            Pay without registration
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

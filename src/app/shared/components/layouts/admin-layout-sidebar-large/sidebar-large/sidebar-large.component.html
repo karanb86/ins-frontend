@@ -1,0 +1,87 @@
+<div [ngClass]="{ open: navService.sidebarState.sidenavOpen }" class="sidebar-left rtl-ps-none"
+  [perfectScrollbar]="{ suppressScrollX: true }">
+  <div class="text-center" style="padding-top: 1.5rem;
+  padding-bottom: 1.5rem;">
+    <img src="./assets/images/brandicon.png" alt="" />
+  </div>
+  <div class="nav-height">
+    <ul class="navigation-left" style="height:50% !important">
+      <li [ngClass]="{ active: nav[0].active }" (click)="onClickChangeActiveFlag(nav[0])" class="nav-item lvl1">
+        <div style="display:flex" class="nav-item-hold" (mouseenter)="selectItem(nav[0])">
+          <!-- <i [class]="'nav-icon ' + nav[0].icon"></i> -->
+          <img src="assets/images/accounticon.png" style="    padding-left: 10px;
+    padding-right: 14px;
+" alt="">
+          <span class="nav-text" style="padding-top:2px">{{ nav[0].name }}</span>
+        </div>
+        <div class="triangle"></div>
+      </li>
+
+
+    </ul>
+    <ul class="navigation-left" style="height:45% !important;display: flex; flex-direction: column;
+    justify-content: flex-end; ">
+
+      <li [ngClass]="{ active: nav[1].active }" (click)="onClickChangeActiveFlag(nav[1])" class="nav-item lvl1">
+
+
+        <div style="display:flex" class="nav-item-hold" (mouseenter)="selectItem(nav[1])">
+          <!-- <i [class]="'nav-icon ' + nav[1].icon"></i> -->
+          <img src="assets/images/settingicon.png" style="    padding-left: 10px;
+    padding-right: 14px;
+" alt="">
+          <span class="nav-text" style="padding-top:2px">{{ nav[1].name }}</span>
+        </div>
+
+
+        <div class="triangle"></div>
+      </li>
+      <li [ngClass]="{ active: nav[2].active }" (click)="nav[2].type !== 'action' && onClickChangeActiveFlag(nav[2])"
+        class="nav-item lvl1">
+        <div style="display:flex" class="nav-item-hold" (click)="nav[2].action($event)"
+          *ngIf="nav[2].type === 'action'">
+          <!-- <i [class]="'nav-icon ' + nav[2].icon"></i> -->
+          <img src="assets/images/logouticon.png" style="    padding-left: 10px;
+    padding-right: 14px;
+" alt="">
+          <span class="nav-text" style="padding-top:2px">{{ nav[2].name }}</span>
+        </div>
+
+        <div class="triangle"></div>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
+
+<div [ngClass]="{ open: navService.sidebarState.childnavOpen }" class="sidebar-left-secondary rtl-ps-none"
+  [perfectScrollbar]="{ suppressScrollX: true }">
+  <header>
+    <h6>Apps</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+  </header>
+  <ng-container *ngTemplateOutlet="menuTemplate; context: { parentItem: selectedItem }"></ng-container>
+</div>
+
+<ng-template #menuTemplate let-parentItem="parentItem">
+  <ul class="childNav" appDropdown>
+    <li *ngFor="let item of parentItem?.sub" appDropdownLink class="nav-item">
+      <a routerLink="{{ item.state }}" *ngIf="item.type === 'link'" class="" routerLinkActive="open">
+        <i *ngIf="item.icon" [class]="'nav-icon ' + item.icon"></i>
+        <span class="item-name lvl1">{{ item.name }}</span>
+      </a>
+
+      <div *ngIf="item.type === 'dropDown'">
+        <a appDropdownToggle [ngClass]="{ open: item.active }" routerLinkActive="open">
+          <i *ngIf="item.icon" [class]="'nav-icon ' + item.icon"></i>
+          <span class="item-name">{{ item.name }}</span>
+          <i class="dd-arrow i-Arrow-Down"></i>
+        </a>
+        <ng-container *ngTemplateOutlet="menuTemplate; context: { parentItem: item }"></ng-container>
+      </div>
+    </li>
+  </ul>
+</ng-template>
+
+<div [ngClass]="{ open: navService.sidebarState.childnavOpen }" class="sidebar-overlay" (click)="closeChildNav()"></div>

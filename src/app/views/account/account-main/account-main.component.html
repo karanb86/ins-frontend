@@ -1,0 +1,44 @@
+<div class="main-content-account" >
+  <div class="breadcrumb" style="    display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: baseline;">
+  
+      <!-- <li><a [routerLink]="['/account']">Account</a></li> -->
+      <h3 class="f-roboto f-2r" style="color:#061F31;padding-bottom:1rem;font-weight: 500 !important;" *ngIf="authService['user']">Welcome back {{ authService['user']['first_name'] || ' '}} </h3>
+      <h3 class="f-roboto f-1d5r" style="color:#4F4F4F">What do you want to do? </h3>
+   
+  </div>
+
+  <!-- <div class="separator-breadcrumb border-top"></div> -->
+
+  <div class="row" style="padding-top:5rem">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4 custom-card">
+        <div class="card-body text-center">
+          <img src="assets/images/icon1.png" alt="" srcset="">
+          <div class="content text-left" style="margin-left: 20px;">
+            <a [routerLink]="['opened-invoices']" class="text-muted text-18 mt-2 mb-0 f-roboto" style="color:#061F31;;font-size:24px;font-weight: 500 !important;margin-top:0px !important" >Pay Invoices</a>
+          </div>
+        </div>
+      </div>
+       <!-- <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4 custom-card">
+        <div class="card-body text-center">
+          <i class="i-Checked-User"></i>
+          <div class="content">
+            <p class="text-muted text-18 mt-2 mb-0">Add Account or Service</p>
+          </div>
+        </div>
+      </div> -->
+      <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4 custom-card">
+        <div class="card-body text-center">
+          <img src="assets/images/icon2.png" alt="" srcset="">
+          <div class="content text-left" style="margin-left: 20px;">
+            <a [routerLink]="['schedule-payments']" class="text-muted text-18 mt-2 mb-0 f-roboto"style="color:#061F31;font-size:24px;font-weight: 500 !important;margin-top:0px !important" >Schedule Payment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

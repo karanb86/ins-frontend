@@ -1,0 +1,194 @@
+@import "../../../../sass/flex-mixin/flex-styles";
+
+.pay-invoices {
+  background-color: #E5E5E5;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  .breadcrumb {
+    @include ins-fx-layout(row);
+    width: 100%;
+    height: 60px;
+    ul {
+      @include ins-fx-layout-with-gap(row, 5px);
+      @include ins-fx-layout-alignment(flex-start, center);
+      background-color: white;
+      padding: 20px 75px;
+      width: 100%;
+      height: 100%;
+      li,
+      li a{
+        font-weight: bold;
+        font-size: 18px !important;
+        color: #163247;
+      }
+      li {
+        width: fit-content;
+        padding: 0;
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .content {
+    margin-left: 75px;
+    @include ins-fx-layout-with-gap(column, 20px);
+    .payment-status {
+      @include ins-fx-layout-with-gap(row, 15px);
+      height: 44px;
+      width: 100%;
+      font-size: 18px;
+      font-weight: bold;
+
+      .status-button {
+        height: 44px;
+        width: 128px;
+        color: #163247;
+        @include ins-fx-layout(row);
+        @include ins-fx-layout-alignment(center, center);
+        cursor: pointer;
+      }
+      .status-button-marked {
+        height: 44px;
+        width: 128px;
+        border-radius: 50px;
+        background-color: #0E77C6;
+        @include ins-fx-layout(row);
+        @include ins-fx-layout-alignment(center, center);
+        cursor: pointer;
+        color: white;
+      }
+    }
+
+    #form {
+      @include ins-fx-layout-with-gap(row, 16px);
+      .invoice-input {
+        width: 304px;
+        height: 44px;
+      }
+      .date-input {
+        height: 44px;
+        width: 180px;
+      }
+      .invoice-input,
+      .date-input {
+        border-radius: 4px;
+        border: transparent;
+        padding: 14px 20px;
+        -webkit-box-shadow: 8px 19px 27px -10px rgba(0,0,0,0.75);
+        -moz-box-shadow: 8px 19px 27px -10px rgba(0,0,0,0.75);
+        box-shadow: 8px 19px 27px -10px rgba(0,0,0,0.75);
+        &::placeholder {
+          font-size: 14px;
+          color: #AFB8BE;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+
+      span {
+        background-color: #0E77C6;
+        height: 44px;
+        width: 44px;
+        border-radius: 4px;
+        @include ins-fx-layout(row);
+        @include ins-fx-layout-alignment(center, center);
+        cursor: pointer;
+      }
+    }
+
+    .data-table {
+      width: 900px;
+      @include ins-fx-layout(column);
+      //@include ins-fx-layout-alignment(space-between, center);
+      .headings {
+        height: 45px;
+        width: 100%;
+        @include ins-fx-layout(row);
+        @include ins-fx-layout-alignment(flex-start, center);
+        background-color: #316C9B;
+        padding: 10px 20px;
+        color: white;
+        span {
+          @include ins-fx-layout(row);
+          @include ins-fx-layout-alignment(center, center);
+          width: calc(100% / 6);
+        }
+        .free-space {
+          width: 60px;
+        }
+      }
+      .data {
+        @include ins-fx-layout(column);
+        //width: 100%;
+        &-rows {
+          height: 54px;
+          //width: 100%;
+          padding: 0 20px;
+          @include ins-fx-layout(row);
+          @include ins-fx-layout-alignment(space-between, center);
+
+          span {
+            @include ins-fx-layout(row);
+            @include ins-fx-layout-alignment(center, center);
+            width: calc(100% / 6);
+          }
+
+          .pdf-button {
+            @include ins-fx-layout(row);
+            @include ins-fx-layout-alignment(center, center);
+            height: 24px;
+            width: 72px;
+            background-color: #163247;
+            color: #ECF5FD;
+            border-radius: 120px;
+            cursor: pointer;
+          }
+        }
+        .grey-row {
+          background-color: #E4EAEF;
+        }
+        .white-row {
+          background-color: white;
+        }
+      }
+    }
+
+    .pagination {
+      width: 900px;
+      @include ins-fx-layout(row);
+      @include ins-fx-layout-alignment(center, center);
+      div {
+        @include ins-fx-layout-with-gap(row, 7px);
+        @include ins-fx-layout-alignment(center, center);
+        img, span {
+          cursor: pointer;
+          color: #163247;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        img {
+          width: 7.5px;
+          height: 12px;
+        }
+        .selected-index {
+          color: #0E77C6;
+        }
+      }
+    }
+  }
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    span {
+      font-size: 10px;
+      height: 12px;
+      width: auto;
+      color: black;
+    }
+  }
+}

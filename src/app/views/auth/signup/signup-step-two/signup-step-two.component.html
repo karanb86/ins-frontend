@@ -1,0 +1,71 @@
+<div
+  class="card o-hidden"
+  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"
+>
+  <div class="row">
+    <div class="col">
+      <div class="p-4">
+        <h1 class="mb-3 text-18">New Customer Registration</h1>
+        <h4 class="text-18">Step 2 - Account Verification</h4>
+        <!-- <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> -->
+        <form (submit)="submitForm()" [formGroup]="stepTwoForm">
+          <div class="form-group col-form-label row align-items-center">
+            <label class="col-sm-3">Policy Or Billing Account #:</label>
+            <div class="col-sm-6">
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                placeholder="To be implemented..."
+                formControlName="billing_account_number"
+                disabled
+              />
+            </div>
+            <button class="btn btn-primary col-sm-3" type="button" disabled>Next</button>
+          </div>
+
+          <h6>Step 3 - Provide your Email Address and Create a Password</h6>
+          <hr />
+
+          <div class="form-group col-form-label row">
+            <label class="col-sm-3">Login ID</label>
+            <div class="col-sm-9">
+              <input class="form-control form-control-sm" type="text" formControlName="username" />
+            </div>
+          </div>
+          <div class="form-group col-form-label row">
+            <label class="col-sm-3">Email ID</label>
+            <div class="col-sm-9">
+              <input class="form-control form-control-sm" type="text" formControlName="email" />
+            </div>
+          </div>
+          <div class="form-group col-form-label row">
+            <label class="col-sm-3">Mobile Phone Number</label>
+            <div class="col-sm-9">
+              <input class="form-control form-control-sm" type="text" formControlName="phone" />
+            </div>
+          </div>
+          <div class="form-group col-form-label row">
+            <label class="col-sm-3">OTP</label>
+            <div class="col-sm-9">
+              <input class="form-control form-control-sm" type="text" formControlName="otp" />
+            </div>
+          </div>
+          <div class="form-group col-form-label row">
+            <label class="col-sm-3">Password</label>
+            <div class="col-sm-9">
+              <input class="form-control form-control-sm" type="password" formControlName="password" />
+            </div>
+          </div>
+          <hr />
+
+          <div class="d-flex align-items-center justify-content-between">
+            <a class="btn btn-primary d-block" [routerLink]="['../']">Back</a>
+            <button class="btn btn-primary" type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
