@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AuthService} from 'services/auth.service';
 
 @Component({
   selector: 'app-account-opened-invoices',
@@ -11,88 +12,89 @@ export class AccountOpenedInvoicesComponent implements OnInit {
   currentIndex = 1;
   paginationArray: number[] = [];
   currentRows = [];
-  public rows = [
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-    {
-      invoice_date: '08/31/2019',
-      invoice_number: 1253152,
-      account_number: 3754235,
-      due_date: '08/31/2019',
-      total_amount: 5,
-      balance_number: 634,
-    },
-  ];
+  // rows = [
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  //   {
+  //     invoice_date: '08/31/2019',
+  //     invoice_number: 1253152,
+  //     account_number: 3754235,
+  //     due_date: '08/31/2019',
+  //     total_amount: 5,
+  //     balance_number: 634,
+  //   },
+  // ];
+  rows = [];
   public columns = [
     { prop: 'invoice_date', name: 'Invoice Date' },
     { prop: 'invoice_number', name: 'Invoice #' },
@@ -102,11 +104,14 @@ export class AccountOpenedInvoicesComponent implements OnInit {
     { prop: 'balance_number', name: 'Balance #' },
   ];
 
-  constructor() {}
+  username: string;
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.getPaginationArray();
-    this.getPaginatedData();
+    this.username = localStorage.getItem('username')
+    this.fetchdata();
+    // this.getPaginationArray();
+    // this.getPaginatedData();
     this.changeIndex.subscribe(i => {
       this.currentIndex = i;
         this.getPaginatedData();
@@ -114,8 +119,10 @@ export class AccountOpenedInvoicesComponent implements OnInit {
   }
   changePaymentStatus(status) {
     this.paymentStatus = status;
+    this.fetchdata();
   }
   getPaginationArray() {
+    this.paginationArray = [];
     let range;
     if (this.rows.length <= 7) {
       range = 1;
@@ -130,7 +137,6 @@ export class AccountOpenedInvoicesComponent implements OnInit {
 
   getPaginatedData() {
     this.currentRows = this.rows.slice((this.currentIndex - 1) * 7, this.currentIndex * 7);
-    console.log('current', this.currentIndex);
   }
 
   onChangeIndex(i) {
@@ -149,5 +155,29 @@ export class AccountOpenedInvoicesComponent implements OnInit {
       this.currentIndex += 1;
       this.onChangeIndex(this.currentIndex);
     }
+  }
+
+  fetchdata () {
+    let baseUrl = 'http://invengerdev-back.deliveryweb.ru/invoices/?';
+    if (this.paymentStatus === 'pending') {
+      baseUrl = baseUrl + 'status=pending&status=past%20due&';
+    } else {
+      baseUrl = baseUrl + 'status=paid&';
+    }
+    this.authService.genericgetapi(baseUrl).subscribe(value => {
+      this.rows = [];
+      value['results'].forEach((v) => {
+        this.rows.push({
+          invoice_date: v['invoice_date'] || ' ',
+          invoice_number: v['invoice_number'] || ' ',
+          account_number: v['billing_account_number'] || ' ',
+          due_date: v['due_date'] || ' ',
+          total_amount: v['amount'] || ' ',
+          balance_number: v['balance_number'] || ' ',
+        });
+      });
+      this.getPaginationArray();
+      console.log(this.currentRows);
+    });
   }
 }

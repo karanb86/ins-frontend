@@ -28,7 +28,7 @@
         <span class="f-roboto" *ngFor="let column of columns">{{column.name | uppercase}}</span>
         <span class="free-space"></span>
       </div>
-      <div class="data">
+      <div *ngIf="rows.length>0" class="data">
         <div class="data-rows" *ngFor="let row of currentRows; let i=index;" [ngClass]="{'grey-row': i%2 === 1, 'white-row': i%2 === 0}">
           <span class="f-roboto">{{row.invoice_date}}</span>
           <span class="f-roboto">{{row.invoice_number}}</span>
@@ -38,6 +38,9 @@
           <span class="f-roboto">{{row.balance_number}}</span>
           <span class="f-roboto pdf-button">PDF</span>
         </div>
+      </div>
+      <div *ngIf="rows.length === 0" class="data">
+        <span class="data-rows white-row">No data to display</span>
       </div>
     </div>
 
