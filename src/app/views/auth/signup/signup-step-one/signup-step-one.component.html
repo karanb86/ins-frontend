@@ -1,47 +1,86 @@
-<div
-  class="card o-hidden"
-  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"
->
-  <div class="row">
-    <div class="col">
-      <div class="p-4">
-        <h1 class="mb-3 text-18">New Customer Registration</h1>
-        <h4 class="text-18">Step 1 - Policy information for registration</h4>
-        <!-- <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> -->
-        <form (submit)="submitForm()" [formGroup]="stepOneForm">
-          <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input id="first_name" class="form-control" type="text" formControlName="first_name" />
-          </div>
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input id="last_name" class="form-control" type="text" formControlName="last_name" />
-          </div>
-          <div class="form-group">
-            <label for="date_of_birth">Date Of Birth</label>
-            <input id="date_of_birth" class="form-control" type="text" formControlName="date_of_birth" />
-          </div>
-          <div class="form-group">
-            <label for="zip_code">Zip Code</label>
-            <input id="zip_code" class="form-control" type="text" formControlName="zip_code" />
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <label class="checkbox checkbox-outline-primary">
-              <input type="checkbox" (change)="termsChanged($event.target.checked)" />
-              <span>I AGREE TO THE TERMS AND CONDITIONS</span>
-              <span class="checkmark"></span>
-            </label>
-          </div>
-          <button
-            class="btn btn-primary btn-block btn-rounded mt-3"
-            [ngClass]="{ disabled: !termsAgreed }"
-            [disabled]="!termsAgreed"
-            type="submit"
-          >
-            Continue
-          </button>
-        </form>
+<div class="sign-up">
+  <div class="sign-up-main">
+      <div class="left">
+        <img src="assets/images/sign.png" alt="">
+        <p>Insurance claims payments, simplified.</p>
       </div>
+
+    <div class="right">
+      <span class="heading f-roboto">Sign up</span>
+
+      <form id="form" (ngSubmit)="submitForm()" [formGroup]="stepOneForm">
+        <div class="each">
+          <span class="label f-roboto">First name</span>
+          <input type="text" placeholder="John" class="sign-up-input" formControlName="first_name">
+        </div>
+
+        <div class="each">
+          <span class="label f-roboto">Last name</span>
+          <input type="text" placeholder="Dupont" class="sign-up-input"formControlName="last_name">
+        </div>
+
+        <div class="each">
+          <span class="label f-roboto">Date of birth</span>
+          <input type="text" placeholder="10/12/1992" class="sign-up-input"formControlName="date_of_birth">
+        </div>
+
+        <div class="each">
+          <span class="label f-roboto">Zip code</span>
+          <input type="text" placeholder="20000" class="sign-up-input"formControlName="zip_code">
+        </div>
+
+        <button class="continue-button f-roboto" type="submit" [disabled]="stepOneForm.invalid">Continue</button>
+          <span class="f-roboto back-button">Back</span>
+      </form>
     </div>
   </div>
 </div>
+
+
+<!--<div-->
+<!--  class="card o-hidden"-->
+<!--  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"-->
+<!--&gt;-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--      <div class="p-4">-->
+<!--        <h1 class="mb-3 text-18">New Customer Registration</h1>-->
+<!--        <h4 class="text-18">Step 1 - Policy information for registration</h4>-->
+<!--        &lt;!&ndash; <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> &ndash;&gt;-->
+<!--        <form (submit)="submitForm()" [formGroup]="stepOneForm">-->
+<!--          <div class="form-group">-->
+<!--            <label for="first_name">First Name</label>-->
+<!--            <input id="first_name" class="form-control" type="text" formControlName="first_name" />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="last_name">Last Name</label>-->
+<!--            <input id="last_name" class="form-control" type="text" formControlName="last_name" />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="date_of_birth">Date Of Birth</label>-->
+<!--            <input id="date_of_birth" class="form-control" type="text" formControlName="date_of_birth" />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="zip_code">Zip Code</label>-->
+<!--            <input id="zip_code" class="form-control" type="text" formControlName="zip_code" />-->
+<!--          </div>-->
+<!--          <div class="d-flex justify-content-center align-items-center">-->
+<!--            <label class="checkbox checkbox-outline-primary">-->
+<!--              <input type="checkbox" (change)="termsChanged($event.target.checked)" />-->
+<!--              <span>I AGREE TO THE TERMS AND CONDITIONS</span>-->
+<!--              <span class="checkmark"></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <button-->
+<!--            class="btn btn-primary btn-block btn-rounded mt-3"-->
+<!--            [ngClass]="{ disabled: !termsAgreed }"-->
+<!--            [disabled]="!termsAgreed"-->
+<!--            type="submit"-->
+<!--          >-->
+<!--            Continue-->
+<!--          </button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

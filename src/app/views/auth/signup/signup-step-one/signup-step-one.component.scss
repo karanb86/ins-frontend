@@ -1,0 +1,84 @@
+@import '../../../../../sass/flex-mixin/flex-styles';
+
+.sign-up {
+  @include ins-fx-layout(row);
+  @include ins-fx-layout-alignment(center, center);
+  background-color: #E5E5E5;
+  &-main {
+    padding: 56px 66px 28px 66px;
+    background-color: white;
+    width: 779px;
+    height: 543px;
+    @include ins-fx-layout-with-gap(row, 20px);
+    @include ins-fx-layout-alignment(space-between, center);
+
+    .left {
+      width: 50%;
+      @include ins-fx-layout-with-gap(column, 24px);
+      img {
+        width: 199px;
+        height: 156px;
+      }
+      p {
+        width: 248px;
+        height: 52px;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        color: #316C9B;
+      }
+    }
+
+    .right {
+      width: 50%;
+      @include ins-fx-layout-with-gap(column, 25px);
+      .heading {
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 35px;
+        color: #000000;
+      }
+      #form {
+        @include ins-fx-layout-with-gap(column, 15px);
+        @include ins-fx-layout-alignment(center, flex-start);
+        .each {
+          @include ins-fx-layout-with-gap(column, 5px);
+
+          .label {
+            font-size: 12px;
+            color: #828282;
+          }
+
+          input.sign-up-input {
+            width: 287px;
+            height: 44px;
+            border: 1px solid #E0E0E0;
+            box-sizing: border-box;
+            padding: 15px 20px;
+
+            &::placeholder {
+              font-size: 12px;
+              color: #828282;
+            }
+          }
+        }
+        .continue-button {
+          border: none;
+          cursor: pointer;
+          width: 287px;
+          height: 44px;
+          color: white;
+          font-weight: bold;
+          background-color: #2F80ED;
+        }
+
+        .back-button {
+          font-size: 14px;
+          line-height: 16px;
+          color: #828282;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
