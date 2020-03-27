@@ -30,7 +30,7 @@
         </div>
 
         <button class="continue-button f-roboto" type="submit" [disabled]="stepOneForm.invalid">Continue</button>
-          <span class="f-roboto back-button">Back</span>
+          <span class="f-roboto back-button" (click)="onGoBack()">Back</span>
       </form>
     </div>
   </div>

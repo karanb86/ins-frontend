@@ -42,4 +42,8 @@ export class SignupStepOneComponent implements OnInit {
     this.authService.signUpFormData = this.stepOneForm.value;
     this.router.navigate(['..', 'step-two'], { relativeTo: this.route });
   }
+
+  onGoBack() {
+    this.router.navigate(['../../'], {relativeTo: this.route});
+  }
 }

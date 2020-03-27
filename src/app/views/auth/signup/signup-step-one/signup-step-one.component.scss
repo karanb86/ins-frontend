@@ -77,6 +77,11 @@
           line-height: 16px;
           color: #828282;
           text-decoration: underline;
+          cursor: pointer;
+          &:focus,
+          &:active {
+            border: none;
+          }
         }
       }
     }

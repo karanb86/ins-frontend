@@ -28,9 +28,9 @@ export class SchedulePaymentsComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    // this.paidDate.dayTemplateData = date => `${date.day}/${date.month}/${date.year}`;
     this.username = localStorage.getItem('username');
     this.fetchdata();
+    this.paidDate.dayTemplateData = date => `${date.day}/${date.month}/${date.year}`;
     this.changeIndex.subscribe(i => {
       this.currentIndex = i;
       this.getPaginatedData();
@@ -88,7 +88,6 @@ export class SchedulePaymentsComponent implements OnInit {
         });
       });
       this.getPaginationArray();
-      console.log(this.currentRows);
     });
   }
 }

@@ -19,7 +19,14 @@
 
     <form id="form">
       <input type="text" class="invoice-input" placeholder="Enter an invoice number">
-      <input type="text" class="date-input" placeholder="Enter a date">
+      <input  placeholder="Enter a date"
+              type="text"
+              class="date-input"
+              ngbDatepicker
+              #startDate="ngbDatepicker"
+              name="startDate"
+              (click)="startDate.toggle()"
+      />
       <span><img src="../../../../assets/images/search-icon.png"></span>
     </form>
 
