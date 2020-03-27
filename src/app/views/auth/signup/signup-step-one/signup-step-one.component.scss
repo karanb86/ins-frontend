@@ -1,14 +1,14 @@
 @import '../../../../../sass/flex-mixin/flex-styles';
 
-.sign-up {
+.sign-up-1 {
   @include ins-fx-layout(row);
   @include ins-fx-layout-alignment(center, center);
   background-color: #E5E5E5;
   &-main {
-    padding: 56px 66px 28px 66px;
+    padding: 40px 66px 28px 66px;
     background-color: white;
     width: 779px;
-    height: 543px;
+    height: 700px;
     @include ins-fx-layout-with-gap(row, 20px);
     @include ins-fx-layout-alignment(space-between, center);
 
@@ -32,6 +32,7 @@
     .right {
       width: 50%;
       @include ins-fx-layout-with-gap(column, 25px);
+      @include ins-fx-layout-alignment(flex-start, flex-start);
       .heading {
         font-weight: bold;
         font-size: 30px;

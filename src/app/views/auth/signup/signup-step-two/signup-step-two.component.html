@@ -1,71 +1,164 @@
-<div
-  class="card o-hidden"
-  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"
->
-  <div class="row">
-    <div class="col">
-      <div class="p-4">
-        <h1 class="mb-3 text-18">New Customer Registration</h1>
-        <h4 class="text-18">Step 2 - Account Verification</h4>
-        <!-- <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> -->
-        <form (submit)="submitForm()" [formGroup]="stepTwoForm">
-          <div class="form-group col-form-label row align-items-center">
-            <label class="col-sm-3">Policy Or Billing Account #:</label>
-            <div class="col-sm-6">
-              <input
-                class="form-control form-control-sm"
-                type="text"
-                placeholder="To be implemented..."
-                formControlName="billing_account_number"
-                disabled
-              />
-            </div>
-            <button class="btn btn-primary col-sm-3" type="button" disabled>Next</button>
-          </div>
+<div class="sign-up-2">
+  <div class="sign-up-2-main">
+    <div class="left">
+      <img src="assets/images/sign.png" alt="">
+      <p>Insurance claims payments, simplified.</p>
+    </div>
 
-          <h6>Step 3 - Provide your Email Address and Create a Password</h6>
-          <hr />
+    <div class="right">
+      <span class="heading f-roboto">Sign up</span>
 
-          <div class="form-group col-form-label row">
-            <label class="col-sm-3">Login ID</label>
-            <div class="col-sm-9">
-              <input class="form-control form-control-sm" type="text" formControlName="username" />
-            </div>
-          </div>
-          <div class="form-group col-form-label row">
-            <label class="col-sm-3">Email ID</label>
-            <div class="col-sm-9">
-              <input class="form-control form-control-sm" type="text" formControlName="email" />
-            </div>
-          </div>
-          <div class="form-group col-form-label row">
-            <label class="col-sm-3">Mobile Phone Number</label>
-            <div class="col-sm-9">
-              <input class="form-control form-control-sm" type="text" formControlName="phone" />
-            </div>
-          </div>
-          <div class="form-group col-form-label row">
-            <label class="col-sm-3">OTP</label>
-            <div class="col-sm-9">
-              <input class="form-control form-control-sm" type="text" formControlName="otp" />
-            </div>
-          </div>
-          <div class="form-group col-form-label row">
-            <label class="col-sm-3">Password</label>
-            <div class="col-sm-9">
-              <input class="form-control form-control-sm" type="password" formControlName="password" />
-            </div>
-          </div>
-          <hr />
+      <form id="form" (ngSubmit)="submitForm()" [formGroup]="stepTwoForm">
+        <div class="each">
+          <span class="label f-roboto">In order to verify your account please provide your policy or billing account #</span>
+          <input type="text" placeholder="John" class="sign-up-input" formControlName="billing_account_number">
+        </div>
 
-          <div class="d-flex align-items-center justify-content-between">
-            <a class="btn btn-primary d-block" [routerLink]="['../']">Back</a>
-            <button class="btn btn-primary" type="submit">
-              Register
-            </button>
-          </div>
-        </form>
-      </div>
+        <div class="each">
+          <span class="label f-roboto">Login ID</span>
+          <input type="text" placeholder="Johndoe450" class="sign-up-input"formControlName="username">
+        </div>
+
+        <div class="each">
+          <span class="label f-roboto">Email ID</span>
+          <input type="text" placeholder="Johndoe@gmail.com" class="sign-up-input"formControlName="email">
+        </div>
+
+        <div class="each">
+          <span class="label f-roboto">Mobile phone number</span>
+          <input type="text" placeholder="+1-202-555-0118" class="sign-up-input"formControlName="phone">
+        </div>
+
+        <div class="each">
+          <span class="label f-roboto">Password</span>
+          <input type="text" placeholder="Enter a strong password" class="sign-up-input"formControlName="password">
+        </div>
+
+        <button class="continue-button f-roboto" type="submit" [disabled]="stepTwoForm.invalid">Continue</button>
+        <span class="f-roboto back-button" (click)="onGoBack()">Back</span>
+      </form>
     </div>
   </div>
 </div>
+
+
+<!--<div-->
+<!--  class="card o-hidden"-->
+<!--  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"-->
+<!--&gt;-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--      <div class="p-4">-->
+<!--        <h1 class="mb-3 text-18">New Customer Registration</h1>-->
+<!--        <h4 class="text-18">Step 1 - Policy information for registration</h4>-->
+<!--        &lt;!&ndash; <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> &ndash;&gt;-->
+<!--        <form (submit)="submitForm()" [formGroup]="stepOneForm">-->
+<!--          <div class="form-group">-->
+<!--            <label for="first_name">First Name</label>-->
+<!--            <input id="first_name" class="form-control" type="text" formControlName="first_name" />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="last_name">Last Name</label>-->
+<!--            <input id="last_name" class="form-control" type="text" formControlName="last_name" />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="date_of_birth">Date Of Birth</label>-->
+<!--            <input id="date_of_birth" class="form-control" type="text" formControlName="date_of_birth" />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="zip_code">Zip Code</label>-->
+<!--            <input id="zip_code" class="form-control" type="text" formControlName="zip_code" />-->
+<!--          </div>-->
+<!--          <div class="d-flex justify-content-center align-items-center">-->
+<!--            <label class="checkbox checkbox-outline-primary">-->
+<!--              <input type="checkbox" (change)="termsChanged($event.target.checked)" />-->
+<!--              <span>I AGREE TO THE TERMS AND CONDITIONS</span>-->
+<!--              <span class="checkmark"></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <button-->
+<!--            class="btn btn-primary btn-block btn-rounded mt-3"-->
+<!--            [ngClass]="{ disabled: !termsAgreed }"-->
+<!--            [disabled]="!termsAgreed"-->
+<!--            type="submit"-->
+<!--          >-->
+<!--            Continue-->
+<!--          </button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div-->
+<!--  class="card o-hidden"-->
+<!--  [@animate]="{ value: '*', params: { y: '120px', opacity: '0', delay: '100ms', duration: '400ms' } }"-->
+<!--&gt;-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--      <div class="p-4">-->
+<!--        <h1 class="mb-3 text-18">New Customer Registration</h1>-->
+<!--        <h4 class="text-18">Step 2 - Account Verification</h4>-->
+<!--        &lt;!&ndash; <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> &ndash;&gt;-->
+<!--        <form (submit)="submitForm()" [formGroup]="stepTwoForm">-->
+<!--          <div class="form-group col-form-label row align-items-center">-->
+<!--            <label class="col-sm-3">Policy Or Billing Account #:</label>-->
+<!--            <div class="col-sm-6">-->
+<!--              <input-->
+<!--                class="form-control form-control-sm"-->
+<!--                type="text"-->
+<!--                placeholder="To be implemented..."-->
+<!--                formControlName="billing_account_number"-->
+<!--                disabled-->
+<!--              />-->
+<!--            </div>-->
+<!--            <button class="btn btn-primary col-sm-3" type="button" disabled>Next</button>-->
+<!--          </div>-->
+
+<!--          <h6>Step 3 - Provide your Email Address and Create a Password</h6>-->
+<!--          <hr />-->
+
+<!--          <div class="form-group col-form-label row">-->
+<!--            <label class="col-sm-3">Login ID</label>-->
+<!--            <div class="col-sm-9">-->
+<!--              <input class="form-control form-control-sm" type="text" formControlName="username" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-form-label row">-->
+<!--            <label class="col-sm-3">Email ID</label>-->
+<!--            <div class="col-sm-9">-->
+<!--              <input class="form-control form-control-sm" type="text" formControlName="email" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-form-label row">-->
+<!--            <label class="col-sm-3">Mobile Phone Number</label>-->
+<!--            <div class="col-sm-9">-->
+<!--              <input class="form-control form-control-sm" type="text" formControlName="phone" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-form-label row">-->
+<!--            <label class="col-sm-3">OTP</label>-->
+<!--            <div class="col-sm-9">-->
+<!--              <input class="form-control form-control-sm" type="text" formControlName="otp" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-form-label row">-->
+<!--            <label class="col-sm-3">Password</label>-->
+<!--            <div class="col-sm-9">-->
+<!--              <input class="form-control form-control-sm" type="password" formControlName="password" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <hr />-->
+
+<!--          <div class="d-flex align-items-center justify-content-between">-->
+<!--            <a class="btn btn-primary d-block" [routerLink]="['../']">Back</a>-->
+<!--            <button class="btn btn-primary" type="submit">-->
+<!--              Register-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

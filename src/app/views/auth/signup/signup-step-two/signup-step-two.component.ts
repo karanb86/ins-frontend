@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
 import { SharedAnimations } from 'src/app/shared/animations/shared-animations';
@@ -21,7 +21,7 @@ export class SignupStepTwoComponent implements OnInit {
     password: this.fb.control(''),
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     if (!this.authService.signUpFormData) {
@@ -35,5 +35,9 @@ export class SignupStepTwoComponent implements OnInit {
       this.authService.signUpFormData = null;
       this.router.navigate(['/login']);
     });
+  }
+
+  onGoBack() {
+    this.router.navigate(['../step-one'], {relativeTo: this.route});
   }
 }

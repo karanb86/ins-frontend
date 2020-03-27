@@ -1,5 +1,5 @@
-<div class="sign-up">
-  <div class="sign-up-main">
+<div class="sign-up-1">
+  <div class="sign-up-1-main">
       <div class="left">
         <img src="assets/images/sign.png" alt="">
         <p>Insurance claims payments, simplified.</p>
@@ -16,17 +16,25 @@
 
         <div class="each">
           <span class="label f-roboto">Last name</span>
-          <input type="text" placeholder="Dupont" class="sign-up-input"formControlName="last_name">
+          <input type="text" placeholder="Dupont" class="sign-up-input" formControlName="last_name">
         </div>
 
         <div class="each">
           <span class="label f-roboto">Date of birth</span>
-          <input type="text" placeholder="10/12/1992" class="sign-up-input"formControlName="date_of_birth">
+          <input  placeholder="Enter a date"
+                  type="text"
+                  class="sign-up-input"
+                  ngbDatepicker
+                  #startDate="ngbDatepicker"
+                  name="startDate"
+                  formControlName="date_of_birth"
+                  (click)="startDate.toggle()"
+          />
         </div>
 
         <div class="each">
           <span class="label f-roboto">Zip code</span>
-          <input type="text" placeholder="20000" class="sign-up-input"formControlName="zip_code">
+          <input type="text" placeholder="20000" class="sign-up-input" formControlName="zip_code">
         </div>
 
         <button class="continue-button f-roboto" type="submit" [disabled]="stepOneForm.invalid">Continue</button>

@@ -10,9 +10,10 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { SharedComponentsModule } from 'shared/components/shared-components.module';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { PayWithoutRegistrationComponent } from './pay-without-registration/pay-without-registration.component';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedComponentsModule, AuthRoutingModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedComponentsModule, AuthRoutingModule, NgbDatepickerModule],
   declarations: [
     SignupStepOneComponent,
     SignupStepTwoComponent,
