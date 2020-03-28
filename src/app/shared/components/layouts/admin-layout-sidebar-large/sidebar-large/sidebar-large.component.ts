@@ -31,6 +31,7 @@ export class SidebarLargeComponent implements OnInit {
       name: 'Setting',
       type: 'dropDown',
       icon: 'i-Library',
+      state: '/settings',
       sub: [
         { name: 'My Bank Account', state: '/uikits/alerts', type: 'link' },
         { name: 'My Credit Cards', state: '/uikits/accordions', type: 'link' },

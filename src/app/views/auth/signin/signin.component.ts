@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedAnimations } from 'src/app/shared/animations/shared-animations';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
-import { Router, RouteConfigLoadStart, ResolveStart, RouteConfigLoadEnd, ResolveEnd } from '@angular/router';
+import {Router, RouteConfigLoadStart, ResolveStart, RouteConfigLoadEnd, ResolveEnd, ActivatedRoute} from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -21,7 +21,7 @@ export class SigninComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.router.events.subscribe(event => {
@@ -55,5 +55,9 @@ export class SigninComponent implements OnInit {
         this.router.navigateByUrl('/account');
         this.loading = false;
       });
+  }
+
+  onPayWithoutReg() {
+    this.router.navigate(['../without-registration'], {relativeTo: this.route});
   }
 }
